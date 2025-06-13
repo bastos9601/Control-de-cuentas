@@ -9,7 +9,7 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
   const usuario = document.getElementById("loginUsuario").value.trim();
   const contrasena = document.getElementById("loginContrasena").value.trim();
 
-  if (usuario === "admin" && contrasena === "1234") {
+  if (usuario === "alfredo" && contrasena === "Alfredo01@") {
     document.getElementById("loginContainer").style.display = "none";
     document.querySelector(".max-w-7xl").style.display = "block";
   } else {
