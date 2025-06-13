@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Control de Cuentas + Clientes</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen p-6">
+
+  <!-- Login -->
+  <div id="loginContainer" class="fixed inset-0 bg-gray-200 flex items-center justify-center z-50">
+    <div class="bg-white p-6 rounded-xl shadow-md w-96">
+      <h2 class="text-2xl font-bold mb-4 text-center">Iniciar Sesión</h2>
+      <form id="loginForm" class="flex flex-col gap-4">
+        <input type="text" id="loginUsuario" placeholder="Usuario" class="border p-2 rounded" required>
+        <input type="password" id="loginContrasena" placeholder="Contraseña" class="border p-2 rounded" required>
+        <button type="submit" class="bg-blue-600 text-white py-2 rounded hover:bg-blue-700">Entrar</button>
+      </form>
+      <p id="loginError" class="text-red-600 text-sm mt-2 hidden text-center">Usuario o contraseña incorrectos.</p>
+    </div>
+  </div>
+
+  <!-- Formulario y tabla -->
+  <div class="max-w-7xl mx-auto bg-white p-6 rounded-xl shadow-md mt-4">
+    <h1 class="text-3xl font-bold mb-4 text-center">Control de Cuentas de Streaming</h1>
+    <div class="flex justify-end mb-4">
+  <button onclick="cerrarSesion()" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">
+    Cerrar Sesión
+  </button>
+</div>
+
+
+    <!-- Formulario -->
+    <form id="formCuenta" class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+      <!-- [campos iguales que ya tienes, no los repito aquí para no hacer largo el mensaje] -->
+       <select id="servicio" required class="border p-2 rounded">
+  <option value="">Selecciona un servicio</option>
+  <!-- Video Streaming -->
+  <option value="Netflix">Netflix</option>
+  <option value="Max">Max</option>
+  <option value="Prime Video">Prime Video</option>
+  <option value="Disney+">Disney+</option>
+  <option value="Apple TV+">Apple TV+</option>
+  <option value="Paramount+">Paramount+</option>
+  <option value="Star+">Star+</option>
+  <option value="Crunchyroll">Crunchyroll</option>
+  <option value="YouTube Premium">YouTube Premium</option>
+
+  <!-- Música -->
+  <option value="Spotify">Spotify</option>
+  <option value="Deezer">Deezer</option>
+  <option value="Apple Music">Apple Music</option>
+  <option value="Amazon Music">Amazon Music</option>
+  <option value="Tidal">Tidal</option>
+  <option value="YouTube Music">YouTube Music</option>
+
+  <!-- Otros servicios -->
+  <option value="Hulu">Hulu</option>
+  <option value="Peacock">Peacock</option>
+  <option value="Discovery+">Discovery+</option>
+</select>
+
+
+<select id="tipoCuenta" required class="border p-2 rounded">
+  <option value="">Tipo</option>
+  <option value="Individual">Completa</option>
+  <option value="Compartida">Compartida</option>
+</select>
+
+<input type="text" id="usuario" placeholder="Usuario" required class="border p-2 rounded" />
+<input type="text" id="contrasena" placeholder="Contraseña" required class="border p-2 rounded" />
+<input type="number" id="precio" placeholder="Precio" required class="border p-2 rounded" />
+<input type="date" id="fechaInicio" required class="border p-2 rounded" />
+<input type="date" id="vencimiento" required class="border p-2 rounded" />
+
+<select id="estado" required class="border p-2 rounded">
+  <option value="">Estado</option>
+  <option value="Activa">Activa</option>
+  <option value="Vencida">Vencida</option>
+</select>
+
+<input type="text" id="nombre" placeholder="Nombre" required class="border p-2 rounded" />
+<input type="text" id="apellido" placeholder="Apellido" required class="border p-2 rounded" />
+<input type="text" id="whatsapp" placeholder="WhatsApp (solo números)" required class="border p-2 rounded" />
+
+<select id="metodoPago" required class="border p-2 rounded">
+  <option value="">Pago</option>
+  <option value="Efectivo">Efectivo</option>
+  <option value="Transferencia">Transferencia</option>
+  <option value="Transferencia">Yape</option>
+  <option value="Transferencia">Plim</option>
+  <option value="Mercado Pago">Mercado Pago</option>
+</select>
+
+<!-- Botón -->
+<div class="md:col-span-4 text-center">
+  <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
+    Guardar Cuenta
+  </button>
+   <button type="button" onclick="limpiarFormulario()" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">
+    Limpiar Campos
+  </button>
+</div>
+
+    </form>
+
+    <!-- Tabla -->
+    <div class="overflow-x-auto">
+      <table class="min-w-full bg-white text-sm">
+        <thead>
+          <tr class="bg-gray-200 text-left font-semibold">
+            <th class="py-2 px-4">Servicio</th>
+            <th class="py-2 px-4">Tipo</th>
+            <th class="py-2 px-4">Usuario</th>
+            <th class="py-2 px-4">Contraseña</th>
+            <th class="py-2 px-4">Precio</th>
+            <th class="py-2 px-4">Inicio</th>
+            <th class="py-2 px-4">Vencimiento</th>
+            <th class="py-2 px-4">Estado</th>
+            <th class="py-2 px-4">Cliente</th>
+            <th class="py-2 px-4">Pago</th>
+            <th class="py-2 px-4">Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="tablaCuentas"></tbody>
+      </table>
+    </div>
+  </div>
+
+</body>
+</html>

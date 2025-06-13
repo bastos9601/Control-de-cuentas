@@ -1,0 +1,133 @@
+/* style.css */
+
+/* General */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f3f4f6;
+  margin: 0;
+  padding: 2rem;
+  line-height: 1.6;
+  color: #374151;
+}
+
+h1 {
+  color: #1f2937;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+
+/* Formulario */
+form {
+  display: grid;
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+
+form input,
+form select {
+  padding: 0.75rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  background-color: #f9fafb;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+form input:focus,
+form select:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.3);
+  background-color: #fff;
+}
+
+form button {
+  background-color: #2563eb;
+  color: #fff;
+  padding: 0.75rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  grid-column: span 1;
+}
+
+form button:hover {
+  background-color: #1d4ed8;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive: 2 columnas en tablet, 4 en desktop */
+@media (min-width: 640px) {
+  form {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1024px) {
+  form {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  form button {
+    grid-column: span 4;
+  }
+}
+
+/* Tabla */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  font-size: 0.95rem;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+thead {
+  background-color: #f3f4f6;
+}
+
+th,
+td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+tbody tr:hover {
+  background-color: #f9fafb;
+}
+
+/* Acciones */
+td button,
+td a {
+  display: inline-block;
+  margin: 0.25rem 0.5rem 0.25rem 0;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+td button:hover,
+td a:hover {
+  color: #1d4ed8;
+  transform: scale(1.03);
+}
+
+td .text-red-600:hover {
+  color: #dc2626;
+}
+
+td .text-green-600:hover {
+  color: #16a34a;
+}
